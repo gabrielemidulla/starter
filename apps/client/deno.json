@@ -1,0 +1,43 @@
+{
+  "name": "@app/client",
+  "exports": "./src/app.html",
+  "tasks": {
+    "dev": "deno run --allow-all --env-file=../../.env npm:vite dev",
+    "build": "deno run --allow-all --env-file=../../.env npm:vite build",
+    "preview": "deno run --allow-all --env-file=../../.env npm:vite preview",
+    "prepare": "deno run --allow-all --env-file=../../.env npm:@sveltejs/kit sync || echo ''",
+    "check": "deno run --allow-all --env-file=../../.env npm:@sveltejs/kit sync && deno run --allow-all --env-file=../../.env",
+    "check:watch": "deno run --allow-all --env-file=../../.env npm:@sveltejs/kit sync && deno run --allow-all --env-file=../../.env --watch",
+    "lint": "deno lint src/",
+    "format": "deno fmt src/",
+    "type-check": "deno run --allow-all --env-file=../../.env",
+    "fmt": "deno fmt src/"
+  },
+  "imports": {
+    "@/*": "./src/lib",
+    "@std/": "jsr:@std/",
+    "@app/server": "../../apps/server/src/index.ts",
+    "@app/shared": "../../packages/shared/src/index.ts",
+    "@trpc/client": "npm:@trpc/client@^11.1.3",
+    "superjson": "npm:superjson@^2.2.2",
+    "zod": "npm:zod@^3.25.32",
+    "@lucide/svelte": "npm:@lucide/svelte@^0.511.0",
+    "@sveltejs/adapter-auto": "npm:@sveltejs/adapter-auto@^6.0.1",
+    "@sveltejs/kit": "npm:@sveltejs/kit@^2.21.1",
+    "@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte@^5.0.3",
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.7",
+    "clsx": "npm:clsx@^2.1.1",
+    "svelte": "npm:svelte@^5.33.4",
+    "svelte-check": "npm:svelte-check@^4.2.1",
+    "tailwind-merge": "npm:tailwind-merge@^3.3.0",
+    "tailwind-variants": "npm:tailwind-variants@^1.0.0",
+    "tailwindcss": "npm:tailwindcss@^4.1.7",
+    "tw-animate-css": "npm:tw-animate-css@^1.3.0",
+    "typescript": "npm:typescript@^5.8.3",
+    "vite": "npm:vite@^6.3.5"
+  },
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "es2022"],
+    "types": ["node"]
+  }
+} 

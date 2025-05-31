@@ -1,0 +1,33 @@
+{
+  "name": "@app/server",
+  "exports": "./src/*",
+  "tasks": {
+    "dev": "deno run --allow-all --env-file=../../.env --watch --unstable-sloppy-imports src/index.ts",
+    "build": "deno compile --allow-all --env-file=../../.env --unstable-sloppy-imports --output=dist/server src/index.ts",
+    "start": "deno run --allow-all --env-file=../../.env --unstable-sloppy-imports src/index.ts",
+    "type-check": "deno check --unstable-sloppy-imports src/**/*.ts",
+    "lint": "deno lint src/",
+    "fmt": "deno fmt src/",
+    "format": "deno fmt src/",
+    "db:migrate": "deno run --allow-all --env-file=../../.env --unstable-sloppy-imports src/db/migrate.ts",
+    "db:seed": "deno run --allow-all --env-file=../../.env --unstable-sloppy-imports src/db/seed.ts"
+  },
+  "imports": {
+    "@std/": "jsr:@std/",
+    "@app/shared": "../../packages/shared/src/index.ts",
+    "@hono/trpc-server": "npm:@hono/trpc-server@^0.3.4",
+    "@trpc/server": "npm:@trpc/server@^11.1.3",
+    "hono": "npm:hono@^4.7.10",
+    "hono/cors": "npm:hono@^4.7.10/cors",
+    "kysely": "npm:kysely@^0.27.6",
+    "pg": "npm:pg@^8.16.0",
+    "superjson": "npm:superjson@^2.2.2",
+    "zod": "npm:zod@^3.25.32",
+    "@types/pg": "npm:@types/pg@^8.15.2",
+    "typescript": "npm:typescript@^5.8.3"
+  },
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom", "es2022"],
+    "strict": false
+  }
+} 

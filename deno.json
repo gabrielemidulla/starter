@@ -1,0 +1,51 @@
+{
+  "workspace": ["apps/client", "apps/server", "packages/shared"],
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "deno task dev:server & deno task dev:client",
+    "dev:client": "cd apps/client && deno task dev",
+    "dev:server": "cd apps/server && deno task dev",
+    "build": "deno task build:shared && deno task build:client && deno task build:server",
+    "build:shared": "cd packages/shared && deno task build",
+    "build:client": "cd apps/client && deno task build",
+    "build:server": "cd apps/server && deno task build",
+    "type-check": "deno task type-check:shared && deno task type-check:client && deno task type-check:server",
+    "type-check:shared": "cd packages/shared && deno task type-check",
+    "type-check:client": "cd apps/client && deno task type-check",
+    "type-check:server": "cd apps/server && deno task type-check",
+    "lint": "deno task lint:shared && deno task lint:client && deno task lint:server",
+    "lint:shared": "cd packages/shared && deno task lint",
+    "lint:client": "cd apps/client && deno task lint",
+    "lint:server": "cd apps/server && deno task lint",
+    "fmt": "deno task fmt:shared && deno task fmt:client && deno task fmt:server",
+    "fmt:shared": "cd packages/shared && deno task fmt",
+    "fmt:client": "cd apps/client && deno task fmt",
+    "fmt:server": "cd apps/server && deno task fmt",
+    "db:migrate": "cd apps/server && deno task db:migrate",
+    "db:seed": "cd apps/server && deno task db:seed",
+    "docker:up": "docker-compose -f Docker/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f Docker/docker-compose.yml down",
+    "docker:build": "docker-compose -f Docker/docker-compose.yml build",
+    "docker:db:up": "docker-compose -f docker/docker-compose.yml up -d db",
+    "docker:db:down": "docker-compose -f docker/docker-compose.yml down db"
+  },
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "es6"],
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": true,
+    "proseWrap": "preserve"
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  }
+} 
